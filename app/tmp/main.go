@@ -29,6 +29,36 @@ func main() {
 	revel.Init(*runMode, *importPath, *srcPath)
 	revel.INFO.Println("Running revel server")
 	
+	revel.RegisterController((*controllers.Employee)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					13: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Add",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					18: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "SaveAdd",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
 	revel.RegisterController((*controllers.App)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
@@ -36,19 +66,35 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					11: []string{ 
-						"greeting",
+					10: []string{ 
 					},
 				},
 			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Attendance)(nil),
+		[]*revel.MethodType{
 			&revel.MethodType{
-				Name: "Hello",
+				Name: "Index",
 				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "myName", Type: reflect.TypeOf((*string)(nil)) },
 				},
 				RenderArgNames: map[int][]string{ 
-					24: []string{ 
-						"myName",
+					10: []string{ 
+					},
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Dashboard)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					10: []string{ 
 					},
 				},
 			},
@@ -121,10 +167,6 @@ func main() {
 		})
 	
 	revel.DefaultValidationKeys = map[string]map[int]string{ 
-		"github.com/x7hub/hrmgo/app/controllers.App.Hello": { 
-			15: "myName",
-			16: "myName",
-		},
 	}
 	testing.TestSuites = []interface{}{ 
 		(*tests.AppTest)(nil),

@@ -2,10 +2,10 @@ package controllers
 
 import "github.com/revel/revel"
 
-type App struct {
+type Dashboard struct {
     *revel.Controller
 }
 
-func (c App) Index() revel.Result {
+func (c Dashboard) Index() revel.Result {
     return c.Render()
 }

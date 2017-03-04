@@ -4,6 +4,32 @@ package routes
 import "github.com/revel/revel"
 
 
+type tEmployee struct {}
+var Employee tEmployee
+
+
+func (_ tEmployee) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Employee.Index", args).Url
+}
+
+func (_ tEmployee) Add(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Employee.Add", args).Url
+}
+
+func (_ tEmployee) SaveAdd(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Employee.SaveAdd", args).Url
+}
+
+
 type tApp struct {}
 var App tApp
 
@@ -15,13 +41,28 @@ func (_ tApp) Index(
 	return revel.MainRouter.Reverse("App.Index", args).Url
 }
 
-func (_ tApp) Hello(
-		myName string,
+
+type tAttendance struct {}
+var Attendance tAttendance
+
+
+func (_ tAttendance) Index(
 		) string {
 	args := make(map[string]string)
 	
-	revel.Unbind(args, "myName", myName)
-	return revel.MainRouter.Reverse("App.Hello", args).Url
+	return revel.MainRouter.Reverse("Attendance.Index", args).Url
+}
+
+
+type tDashboard struct {}
+var Dashboard tDashboard
+
+
+func (_ tDashboard) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Dashboard.Index", args).Url
 }
 
 
